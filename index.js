@@ -10,47 +10,79 @@ const btn = document.getElementById("btn")
 
 form.addEventListener("submit", e => {
     e.preventDefault();
-    ageCalculation(dayInput.value, monthInput.value, yearInput.value);
+    if(!dayInput.value || !monthInput.value || !yearInput.value){
+        console.error("Field is required.")
+    }
+    else if(parseInt(dayInput.value) < 1 || parseInt(dayInput.value) > 31){
+        console.error("Invalid day")
+    }
+    else if(parseInt(monthInput.value) < 1 || parseInt(monthInput.value) >= 12){
+        console.error("Invalid month")
+    }
+    else if(parseInt(yearInput.value) < 1 || parseInt(yearInput.value) > 9999){
+        console.error("Invalid year")
+    } else {
+        ageCalculation(parseInt(dayInput.value), parseInt(monthInput.value), parseInt(yearInput.value));
+    }
 })
+
+const leapYear = (year) => {
+    if(year % 4 === 0 && year % 100 !== 0){
+        return true;
+    } 
+    else if(year % 400 === 0){
+        return true;
+    }
+    return false;
+}
+
+const daysInMonth = (month, year) => {
+    switch(month){
+        case 1, 3, 5, 7, 8, 10, 12:
+            return 31;
+        case 4, 6, 9, 11:
+            return 30;
+        case 2:
+            if(leapYear(year)){
+                return 29;
+            } else {
+                return 28;
+            }
+        default:
+            return -1;
+    }
+}
 
 const ageCalculation = (d,m,y) => {
     const date = new Date();
     const shortDate = date.toLocaleDateString('en-AU');
 
-    const dateD = shortDate.slice(0,2);
-    const dateM = shortDate.slice(3,5);
-    const dateY = shortDate.slice(6,12);
+    const dateD = parseInt(shortDate.slice(0,2));
+    const dateM = parseInt(shortDate.slice(3,5));
+    const dateY = parseInt(shortDate.slice(6,12));
 
-    console.log(`${dateD}/${dateM}/${dateY}`);
+    // console.log(`${dateD}/${dateM}/${dateY}`);
 
-    let newYear = parseInt(dateY - y);
-    let newMonth = parseInt(dateM - m);
-    let newDay = parseInt(dateD - d);
-
-    console.log(newMonth);
+    let newYear = dateY - y;
+    let newMonth = dateM - m;
+    let newDay = dateD - d;
 
     if(newMonth === 0){
         newMonth;
         newDay++;
-        console.log(newYear, newMonth, newYear)
     }
-    else if(parseInt(m) < dateM){
+    else if(m < dateM){
         newYear;
         newMonth;
         newDay;
-        console.log(newYear, newMonth, newYear)
     }
-    else if(parseInt(m) > dateM){
-        console.log(newYear, newMonth, newYear)
+    else if(m > dateM){
         newYear--;
         newMonth += 12;
-        console.log(newYear, newMonth, newYear)
     }
-    
+
     dayOutput.innerHTML = newDay;
     monthOutput.innerHTML = newMonth;
     yearOutput.innerHTML = newYear;
-
-    console.log(newYear, newMonth, newDay);
 }
 
