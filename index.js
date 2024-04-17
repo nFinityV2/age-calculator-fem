@@ -38,9 +38,18 @@ const leapYear = (year) => {
 
 const daysInMonth = (month, year) => {
     switch(month){
-        case 1, 3, 5, 7, 8, 10, 12:
+        case 1:
+        case 3:
+        case 5: 
+        case 7:
+        case 8: 
+        case 10:
+        case 12:
             return 31;
-        case 4, 6, 9, 11:
+        case 4: 
+        case 6: 
+        case 9:
+        case 11:
             return 30;
         case 2:
             if(leapYear(year)){
@@ -57,29 +66,52 @@ const ageCalculation = (d,m,y) => {
     const date = new Date();
     const shortDate = date.toLocaleDateString('en-AU');
 
-    const dateD = parseInt(shortDate.slice(0,2));
-    const dateM = parseInt(shortDate.slice(3,5));
-    const dateY = parseInt(shortDate.slice(6,12));
+    const currentDay = parseInt(shortDate.slice(0,2));
+    const currentMon = parseInt(shortDate.slice(3,5));
+    const currentYear = parseInt(shortDate.slice(6,12));
 
-    // console.log(`${dateD}/${dateM}/${dateY}`);
+    console.log(`${currentDay}/${currentMon}/${currentYear}`);
 
-    let newYear = dateY - y;
-    let newMonth = dateM - m;
-    let newDay = dateD - d;
+    let newYear = currentYear - y;
+    let newMonth = currentMon - m;
+    let newDay = currentDay - d;
 
     if(newMonth === 0){
-        newMonth;
-        newDay++;
-    }
-    else if(m < dateM){
-        newYear;
+        console.log(newMonth, newDay)
+        if(d > currentDay){
+            newYear--;
+            newMonth += 11;
+            newDay += daysInMonth(m, currentYear);
+        }
         newMonth;
         newDay;
     }
-    else if(m > dateM){
-        newYear--;
-        newMonth += 12;
+    else if(m < currentMon){
+        newYear;
+        if(d > currentDay){
+            newMonth--;
+            newDay += daysInMonth(m, currentYear);
+        }
+        
+        newMonth;
+        newDay;
     }
+    else if(m > currentMon){
+        newYear--;
+        if(d > currentDay){
+            newMonth--;
+            newDay += daysInMonth(m, currentYear);
+        }
+        newMonth += 12;
+        newDay;
+    }
+    
+    // if(d > currentDay){
+        
+    //     newDay += daysInMonth(currentMon, currentYear);
+    // } else {
+    //     newDay;
+    // }
 
     dayOutput.innerHTML = newDay;
     monthOutput.innerHTML = newMonth;
