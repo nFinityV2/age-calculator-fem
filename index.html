@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="styles.css">
-  <title>Frontend Mentor | Age calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <main>
+      <section class="input-container">
+        <div class="day">
+          <label for="day">Day</label>
+          <input
+            type="text"
+            class="input"
+            name="day"
+            id="day"
+            maxlength="2"
+            size="2"
+            placeholder="--"
+          />
+        </div>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <main>
-    <section class="input-container">
-      <form id="age-form">
-        <label for="day">Day
-        <input 
-          type="text" 
-          class="input"
-          name="day"
-          id="day"
-          placeholder="--"
-        >
-      </label>
-      <label for="month">Month
-        <input 
-          type="text" 
-          class="input"
-          name="month"
-          id="month"
-          placeholder="--"
-        >
-      </label>
-      <label for="year">Year
-        <input 
-          type="text" 
-          class="input"
-          name="year"
-          id="year"
-          placeholder="----"
-        >
-      </label>
-      <button type="submit" id="btn">Hi</button>
-      </form>
-      
-    </section>
-    <section class="output-container">
-      <h1><span id="outputYear"></span>years</h1>
-      <h1><span id="outputMonth"></span>months</h1>
-      <h1><span id="outputDay"></span>days</h1>
-    </section>
-  </main>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-  <script src="index.js"></script>
-</body>
+        <div class="month">
+          <label for="month">Month</label>
+          <input
+            type="text"
+            class="input"
+            name="month"
+            id="month"
+            maxlength="2"
+            size="2"
+            placeholder="--"
+          />
+        </div>
+
+        <div class="year">
+          <label for="year">Year</label>
+          <input
+            type="text"
+            class="input"
+            name="year"
+            id="year"
+            maxlength="4"
+            size="4"
+            placeholder="----"
+          />
+        </div>
+      </section>
+
+      <section class="btn-container">
+        <button type="submit" id="btn">
+          <img src="assets/images/icon-arrow.svg" alt="icon-arrow" />
+        </button>
+      </section>
+
+      <section class="output-container">
+        <h1><span id="outputYear"></span> years</h1>
+        <h1><span id="outputMonth"></span> months</h1>
+        <h1><span id="outputDay"></span> days</h1>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
+  <footer class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+      >Frontend Mentor</a
+    >. Coded by <a href="#">Your Name Here</a>.
+  </footer>
 </html>

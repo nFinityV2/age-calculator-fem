@@ -5,10 +5,9 @@ const dayOutput = document.getElementById("outputDay");
 const monthOutput = document.getElementById("outputMonth");
 const yearOutput = document.getElementById("outputYear");
 
-const form = document.getElementById("age-form")
 const btn = document.getElementById("btn")
 
-form.addEventListener("submit", e => {
+btn.addEventListener("click", e => {
     e.preventDefault();
     if(!dayInput.value || !monthInput.value || !yearInput.value){
         console.error("Field is required.")
@@ -106,13 +105,6 @@ const ageCalculation = (d,m,y) => {
         newDay;
     }
     
-    // if(d > currentDay){
-        
-    //     newDay += daysInMonth(currentMon, currentYear);
-    // } else {
-    //     newDay;
-    // }
-
     dayOutput.innerHTML = newDay;
     monthOutput.innerHTML = newMonth;
     yearOutput.innerHTML = newYear;
