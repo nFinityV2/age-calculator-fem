@@ -20,53 +20,51 @@
         <div class="day">
           <label for="day">Day</label>
           <input
-            type="text"
+            type="number"
             class="input"
             name="day"
             id="day"
             maxlength="2"
-            size="2"
-            placeholder="--"
+            placeholder="DD"
           />
         </div>
 
         <div class="month">
           <label for="month">Month</label>
           <input
-            type="text"
+            type="number"
             class="input"
             name="month"
             id="month"
             maxlength="2"
-            size="2"
-            placeholder="--"
+            placeholder="MM"
           />
         </div>
 
         <div class="year">
           <label for="year">Year</label>
           <input
-            type="text"
+            type="number"
             class="input"
             name="year"
             id="year"
             maxlength="4"
-            size="4"
-            placeholder="----"
+            placeholder="YYYY"
           />
         </div>
       </section>
 
       <section class="btn-container">
-        <button type="submit" id="btn">
+        <button type="submit" id="btn" class="btn-age">
           <img src="assets/images/icon-arrow.svg" alt="icon-arrow" />
         </button>
+        <hr>
       </section>
 
       <section class="output-container">
-        <h1><span id="outputYear"></span> years</h1>
-        <h1><span id="outputMonth"></span> months</h1>
-        <h1><span id="outputDay"></span> days</h1>
+        <h1><span id="outputYear">--</span> years</h1>
+        <h1><span id="outputMonth">--</span> months</h1>
+        <h1><span id="outputDay">--</span> days</h1>
       </section>
     </main>
     <script src="index.js"></script>
@@ -75,6 +73,6 @@
     Challenge by
     <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
       >Frontend Mentor</a
-    >. Coded by <a href="#">Your Name Here</a>.
+    >. Coded by <a href="#">Nathan Soh</a>.
   </footer>
 </html>

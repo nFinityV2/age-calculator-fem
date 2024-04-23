@@ -20,9 +20,31 @@ body {
     place-content: center;
 }
 
+label {
+    color: var(--smokey-grey);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+input[type="number"] {
+    border: 2px solid var(--light-grey);
+    border-radius: 7px;
+    color: var(--off-black);
+    letter-spacing: 2px;
+    max-width: 80px;
+    padding: 0.5em;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+hr {
+    width: 90%;
+}
+
 .input-container {
     display: flex;
     justify-content: space-evenly;
+    column-gap: 0.5em;
 }
 
 .day, .month, .year, .output-container, .btn-container {
@@ -30,8 +52,16 @@ body {
     flex-direction: column;
 }
 
+.day, .month, .year {
+    max-width: 50%;
+}
+
+.btn-container {
+    align-items: center;
+}
+
 .output-container {
-    margin: 1em 1.5em;
+    margin: 0 1.5em 1em;
 }
 
 .output-container > h1, .output-container > h1 > span {
@@ -43,6 +73,21 @@ body {
 
 .output-container > h1 > span {
     color: var(--purple);
+}
+
+.btn-age {
+    border: none;
+    margin: 1em 0.75em;
+    padding: 1em;
+    border-radius: 50%;
+    background-color: var(--purple);
+    height: 65px;
+    width: 65px;
+}
+
+.btn-age > img {
+    max-width: 30px;
+    max-height: 30px;
 }
 
 .attribution { 
