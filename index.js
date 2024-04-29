@@ -5,26 +5,55 @@ const dayOutput = document.getElementById("outputDay");
 const monthOutput = document.getElementById("outputMonth");
 const yearOutput = document.getElementById("outputYear");
 
-const btn = document.getElementById("btn")
+const dayError = document.getElementById("error-day");
+const monthError = document.getElementById("error-month");
+const yearError = document.getElementById("error-year");
+
+const date = new Date();
+const shortDate = date.toLocaleDateString('en-AU');
+const btn = document.getElementById("btn");
 
 btn.addEventListener("click", e => {
     e.preventDefault();
+    let yearCheck = parseInt(shortDate.slice(6,12));
+
     if(!dayInput.value || !monthInput.value || !yearInput.value){
-        console.error("Field is required.")
+        dayInput.classList.add("error");
+        monthInput.classList.add("error");
+        yearInput.classList.add("error");
+        dayError.innerHTML = `<p class="error">Field is required</p>`;
+        monthError.innerHTML = `<p class="error">Field is required</p>`;
+        yearError.innerHTML = `<p class="error">Field is required</p>`;
     }
     else if(parseInt(dayInput.value) < 1 || parseInt(dayInput.value) > 31){
+        dayInput.classList.add("error");
         console.error("Invalid day")
     }
     else if(parseInt(monthInput.value) < 1 || parseInt(monthInput.value) >= 12){
+        monthInput.classList.add("error");
         console.error("Invalid month")
     }
-    else if(parseInt(yearInput.value) < 1 || parseInt(yearInput.value) > 9999){
-        console.error("Invalid year")
-    } else {
-        ageCalculation(parseInt(dayInput.value), parseInt(monthInput.value), parseInt(yearInput.value));
+    else if(parseInt(yearInput.value) > yearCheck){
+        yearInput.classList.add("error");
+        console.error("Year must not be in the future.")
     }
-})
+    else if(parseInt(yearInput.value) < 1){
+        yearInput.classList.add("error");
+        console.error("Invalid year")
+    } 
+    else {
+        dayInput.classList.remove("error");
+        monthInput.classList.remove("error");
+        yearInput.classList.remove("error");
 
+        dayError.innerHTML = ``;
+        monthError.innerHTML = ``;
+        yearError.innerHTML = ``;
+    
+        ageCalculation(parseInt(dayInput.value), parseInt(monthInput.value), parseInt(yearInput.value));
+    } 
+});  
+    
 const leapYear = (year) => {
     if(year % 4 === 0 && year % 100 !== 0){
         return true;
@@ -62,9 +91,6 @@ const daysInMonth = (month, year) => {
 }
 
 const ageCalculation = (d,m,y) => {
-    const date = new Date();
-    const shortDate = date.toLocaleDateString('en-AU');
-
     const currentDay = parseInt(shortDate.slice(0,2));
     const currentMon = parseInt(shortDate.slice(3,5));
     const currentYear = parseInt(shortDate.slice(6,12));
@@ -76,7 +102,6 @@ const ageCalculation = (d,m,y) => {
     let newDay = currentDay - d;
 
     if(newMonth === 0){
-        console.log(newMonth, newDay)
         if(d > currentDay){
             newYear--;
             newMonth += 11;
@@ -104,9 +129,10 @@ const ageCalculation = (d,m,y) => {
         newMonth += 12;
         newDay;
     }
-    
-    dayOutput.innerHTML = newDay;
-    monthOutput.innerHTML = newMonth;
-    yearOutput.innerHTML = newYear;
+
+        dayOutput.innerHTML = newDay;
+        monthOutput.innerHTML = newMonth;
+        yearOutput.innerHTML = newYear;
+   
 }
 

@@ -52,8 +52,8 @@ input:hover, input:active {
 
 hr {
     width: 275px;
-    position: absolute;
-    top: 145px;
+    position: fixed;
+    top: 165px;
     z-index: 1;
     border: 1px solid var(--off-white);
 }
@@ -72,7 +72,7 @@ hr {
 
 .btn-container {
     align-items: center;
-    margin: 0 1.5em;
+    margin: 1.15em 1.5em 0;
 }
 
 .output-container {
@@ -108,6 +108,14 @@ hr {
 
 .btn-age:hover {
     background-color: var(--off-black);
+}
+
+.error {
+    border-color: var(--light-red);
+    color: var(--light-red);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.75rem;
 }
 
 .attribution { 
