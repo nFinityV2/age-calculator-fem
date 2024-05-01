@@ -37,7 +37,7 @@ label {
     letter-spacing: 2px;
 }
 
-input[type="text"] {
+input {
     border: 2px solid var(--light-grey);
     border-radius: 7px;
     color: var(--off-black);
@@ -52,8 +52,8 @@ input:hover, input:active {
 
 hr {
     width: 275px;
-    position: fixed;
-    top: 165px;
+    position: relative;
+    bottom: 58px;
     z-index: 1;
     border: 1px solid var(--off-white);
 }
@@ -63,6 +63,7 @@ hr {
     justify-content: space-evenly;
     column-gap: 1em;
     margin: 0 1.5em;
+    max-height: 115px;
 }
 
 .day, .month, .year, .output-container, .btn-container {
@@ -112,6 +113,10 @@ hr {
 
 .error {
     border-color: var(--light-red);
+    color: var(--light-red);
+}
+
+.error-text {
     color: var(--light-red);
     font-weight: 400;
     font-style: italic;

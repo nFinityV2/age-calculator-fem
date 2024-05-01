@@ -8,6 +8,7 @@ const yearOutput = document.getElementById("outputYear");
 const dayError = document.getElementById("error-day");
 const monthError = document.getElementById("error-month");
 const yearError = document.getElementById("error-year");
+const lblError = document.getElementById("input-lbl")
 
 const date = new Date();
 const shortDate = date.toLocaleDateString('en-AU');
@@ -21,31 +22,32 @@ btn.addEventListener("click", e => {
         dayInput.classList.add("error");
         monthInput.classList.add("error");
         yearInput.classList.add("error");
-        dayError.innerHTML = `<p class="error">Field is required</p>`;
-        monthError.innerHTML = `<p class="error">Field is required</p>`;
-        yearError.innerHTML = `<p class="error">Field is required</p>`;
+        lblError.classList.add("error");
+        dayError.innerHTML = `<p class="error-text">Field is required</p>`;
+        monthError.innerHTML = `<p class="error-text">Field is required</p>`;
+        yearError.innerHTML = `<p class="error-text">Field is required</p>`;
     }
     else if(parseInt(dayInput.value) < 1 || parseInt(dayInput.value) > 31){
         dayInput.classList.add("error");
-        console.error("Invalid day")
+        dayError.innerHTML = `<p class="error-text">Invalid Day</p>`;
     }
     else if(parseInt(monthInput.value) < 1 || parseInt(monthInput.value) >= 12){
         monthInput.classList.add("error");
-        console.error("Invalid month")
+        monthError.innerHTML = `<p class="error-text">Invalid Month</p>`;
     }
     else if(parseInt(yearInput.value) > yearCheck){
         yearInput.classList.add("error");
-        console.error("Year must not be in the future.")
+        yearError.innerHTML = `<p class="error-text">Year must not be in the future.</p>`;
     }
     else if(parseInt(yearInput.value) < 1){
         yearInput.classList.add("error");
-        console.error("Invalid year")
+        yearError.innerHTML = `<p class="error-text">Invalid Year</p>`;
     } 
     else {
         dayInput.classList.remove("error");
         monthInput.classList.remove("error");
         yearInput.classList.remove("error");
-
+        lblError.classList.remove("error");
         dayError.innerHTML = ``;
         monthError.innerHTML = ``;
         yearError.innerHTML = ``;
