@@ -53,9 +53,10 @@ input:hover, input:active {
 hr {
     width: 275px;
     position: relative;
-    bottom: 58px;
+    bottom: 50px;
     z-index: 1;
     border: 1px solid var(--off-white);
+    margin: 0;
 }
 
 .input-container {
@@ -82,6 +83,7 @@ hr {
 
 .output-container {
     margin: 0 1.5em 1em;
+    line-height: 1.2;
 }
 
 .output-container > h1, .output-container > h1 > span {
@@ -125,6 +127,7 @@ hr {
     font-weight: 400;
     font-style: italic;
     font-size: 0.75rem;
+    margin: 0.75em 0 0;
 }
 
 .attribution { 
@@ -136,4 +139,55 @@ hr {
 .attribution a { 
     color: hsl(228, 45%, 44%); 
     font-size: 0.75rem;
+}
+
+
+@media (min-width: 1024px) {
+    main {
+        width: 900px;
+        height: 550px;
+    }
+
+    input {
+        width: 100px;
+        padding: 0.5em 1em;
+    }
+
+    hr {
+        width: 775px;
+        bottom: 60px;
+    }
+
+    .input-container{
+        margin: 1em 4em 0;
+    }
+
+    .input-container {
+        justify-content: flex-start;
+        column-gap: 2em;
+    }
+
+    .btn-container {
+        margin: 0 4em
+    }
+
+    .btn-age {
+        width: 85px;
+        height: 85px;
+        position: relative;
+        left: 350px;
+    }
+
+    .btn-age > img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+
+    .output-container {
+        margin: 0 4em 2em;
+    }
+
+    .output-container > h1, .output-container > h1 > span {
+        font-size: 5rem;
+    }
 }
